@@ -95,7 +95,9 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Energy: 1.5
     - _EnvironmentReflections: 1
+    - _Excitement: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -109,6 +111,7 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
+    - _Spikes: 0.025
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
