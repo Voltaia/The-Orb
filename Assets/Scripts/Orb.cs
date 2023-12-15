@@ -47,7 +47,7 @@ public class Orb : MonoBehaviour
 			desiredSpikes = RestingSpikes;
 		}
 
-		if (currentExcitement < 0.05f && desiredExcitement < 0.05f) transitionSpeed = RestingSpeed; 
+		if (currentExcitement < 0.05f && desiredExcitement < 0.05f) transitionSpeed = RestingSpeed;
 	}
 
 	private void OnTriggerEnter(Collider other)
