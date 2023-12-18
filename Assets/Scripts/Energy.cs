@@ -33,7 +33,7 @@ public class Energy : MonoBehaviour
 			Vector3 mousePosition = Input.mousePosition;
 			mousePosition.z = 2;
 			Vector3 mouseWorldPosition = Vector3.Scale(Camera.main.ScreenToWorldPoint(mousePosition), new Vector3(1, 1, 0));
-			transform.position = Vector3.Lerp(transform.position, mouseWorldPosition, 0.05f);
+			transform.position = Vector3.Lerp(transform.position, mouseWorldPosition, 5.0f * Time.deltaTime);
 			if (Input.GetMouseButtonUp(0)) LetGo();
 		}
 		else
