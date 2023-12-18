@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 
 public class Energy : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class Energy : MonoBehaviour
 		meshRenderer = GetComponentInChildren<MeshRenderer>();
 		material = meshRenderer.material;
 		rigidbody = GetComponentInChildren<Rigidbody>();
+	}
+
+	private void Start()
+	{
+		Decay();
 	}
 
 	private void Update()
@@ -56,6 +62,16 @@ public class Energy : MonoBehaviour
 		isGrabbed = false;
 		rigidbody.isKinematic = false;
 		targetExcitement = 0.5f;
+	}
+
+	private async void Decay()
+	{
+		while (true)
+		{
+			try { await Task.Delay(5000, destroyCancellationToken); }
+			catch { break; }
+			if (!meshRenderer.isVisible) Destroy(gameObject);
+		}
 	}
 
 	private void OnMouseEnter()

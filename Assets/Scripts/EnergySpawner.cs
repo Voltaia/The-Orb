@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using System.Threading;
 
 public class EnergySpawner : MonoBehaviour
 {
 	public Orb orb;
 	public GameObject orbPrefab;
+	public float spawnRadius;
+	public float speedMin;
+	public float speedMax;
+	public float torqueMin;
+	public float torqueMax;
+	public int delayMin;
+	public int delayMax;
 
 	private void Start()
 	{
@@ -18,10 +26,28 @@ public class EnergySpawner : MonoBehaviour
 	{
 		while (true)
 		{
-			await Task.Delay(2000);
-			GameObject orbGameobject = Instantiate(orbPrefab, transform.position, Quaternion.identity);
+			// Cooldown
+			try { await Task.Delay(Random.Range(delayMin, delayMax), destroyCancellationToken); }
+			catch { break; }
+
+			// Trajectory
+			Vector3 locationOffset = Random.insideUnitCircle.normalized;
+			Vector3 location = transform.position + locationOffset * spawnRadius;
+			Vector3 direction = (transform.position - location).normalized;
+			Vector3 adjustedDirection = (direction + Random.insideUnitSphere * 0.5f).normalized;
+			Vector3 force = adjustedDirection * Random.Range(speedMin, speedMax);
+
+			// Creation
+			GameObject orbGameobject = Instantiate(orbPrefab, location, Quaternion.identity);
 			Rigidbody orbRigidbody = orbGameobject.GetComponent<Rigidbody>();
-			orbRigidbody.AddForce(transform.forward * 10, ForceMode.Impulse);
+			orbRigidbody.AddForce(force, ForceMode.Impulse);
+			orbRigidbody.AddTorque(Random.insideUnitCircle * Random.Range(0.25f, 1.5f));
 		}
+	}
+
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawWireSphere(transform.position, spawnRadius);
 	}
 }

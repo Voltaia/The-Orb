@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: A Snack
+  m_Name: Energy
   m_Shader: {fileID: -6465566751694194690, guid: 358751c4f2ab0114a80a414f06745ac8,
     type: 3}
   m_Parent: {fileID: 0}

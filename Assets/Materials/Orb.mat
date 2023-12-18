@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: The Orb
+  m_Name: Orb
   m_Shader: {fileID: -6465566751694194690, guid: 73d3514da67015c41abd3a1679a826ac,
     type: 3}
   m_Parent: {fileID: 0}
