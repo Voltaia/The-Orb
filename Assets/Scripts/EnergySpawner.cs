@@ -19,16 +19,15 @@ public class EnergySpawner : MonoBehaviour
 	private void Start()
 	{
 		transform.LookAt(orb.transform.position);
-		SpawnEnergy();
+		StartCoroutine(SpawnEnergy());
 	}
 
-	private async void SpawnEnergy()
+	private IEnumerator SpawnEnergy()
 	{
 		while (true)
 		{
 			// Cooldown
-			try { await Task.Delay(Random.Range(delayMin, delayMax), destroyCancellationToken); }
-			catch { break; }
+			yield return new WaitForSeconds(Random.Range(delayMin, delayMax));
 
 			// Trajectory
 			Vector3 locationOffset = Random.insideUnitCircle.normalized;

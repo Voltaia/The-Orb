@@ -23,7 +23,7 @@ public class Energy : MonoBehaviour
 
 	private void Start()
 	{
-		Decay();
+		StartCoroutine(Decay());
 	}
 
 	private void Update()
@@ -64,12 +64,11 @@ public class Energy : MonoBehaviour
 		targetExcitement = 0.5f;
 	}
 
-	private async void Decay()
+	private IEnumerator Decay()
 	{
 		while (true)
 		{
-			try { await Task.Delay(5000, destroyCancellationToken); }
-			catch { break; }
+			yield return new WaitForSeconds(5);
 			if (!meshRenderer.isVisible) Destroy(gameObject);
 		}
 	}
