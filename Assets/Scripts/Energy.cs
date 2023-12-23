@@ -11,7 +11,7 @@ public class Energy : MonoBehaviour
 	private bool isMouseOver;
 	private float currentExcitement;
 	private float targetExcitement;
-	private const float TransitionSpeed = 0.05f;
+	private const float TransitionSpeed = 3.5f;
 	public bool isGrabbed;
 
 	private void Awake()
@@ -46,7 +46,7 @@ public class Energy : MonoBehaviour
 			else targetExcitement = 0.0f;
 		}
 
-		currentExcitement = Mathf.Lerp(currentExcitement, targetExcitement, TransitionSpeed);
+		currentExcitement = Mathf.Lerp(currentExcitement, targetExcitement, TransitionSpeed * Time.deltaTime);
 		material.SetFloat("_Excitement", currentExcitement);
 	}
 
