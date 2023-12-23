@@ -41,13 +41,13 @@ public class Orb : MonoBehaviour
 		currentExcitement = Mathf.Lerp(currentExcitement, desiredExcitement, transitionSpeed);
 		material.SetFloat("_Excitement", currentExcitement);
 
-		if (currentExcitement > 0.95f)
+		if (currentExcitement > 0.99f)
 		{
 			desiredExcitement = 0.0f;
 			desiredSpikes = RestingSpikes;
 		}
 
-		if (currentExcitement < 0.05f && desiredExcitement < 0.05f) transitionSpeed = RestingSpeed;
+		if (currentExcitement < 0.01f && desiredExcitement < 0.01f) transitionSpeed = RestingSpeed;
 	}
 
 	private void OnTriggerEnter(Collider other)

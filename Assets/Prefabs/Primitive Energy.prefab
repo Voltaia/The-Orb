@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa238056c7e9154ca5f708e01ba69a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGrabbed: 0
 --- !u!54 &9072457715348860258
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -56,7 +57,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
