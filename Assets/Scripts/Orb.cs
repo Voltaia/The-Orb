@@ -13,8 +13,8 @@ public class Orb : MonoBehaviour
 	private float transitionSpeed;
 	private const float RestingSpikes = 0.025f;
 	private const float ActiveSpikes = 0.1f;
-	private const float RestingSpeed = 0.02f;
-	private const float ExcitedSpeed = 0.01f;
+	private const float RestingSpeed = 5.0f;
+	private const float ExcitedSpeed = 2.5f;
 
 	private void Awake()
 	{
@@ -35,10 +35,10 @@ public class Orb : MonoBehaviour
 
 	private void Update()
 	{
-		currentSpikes = Mathf.Lerp(currentSpikes, desiredSpikes, transitionSpeed);
+		currentSpikes = Mathf.Lerp(currentSpikes, desiredSpikes, transitionSpeed * Time.deltaTime);
 		material.SetFloat("_Spikes", currentSpikes);
 
-		currentExcitement = Mathf.Lerp(currentExcitement, desiredExcitement, transitionSpeed);
+		currentExcitement = Mathf.Lerp(currentExcitement, desiredExcitement, transitionSpeed * Time.deltaTime);
 		material.SetFloat("_Excitement", currentExcitement);
 
 		if (currentExcitement > 0.99f)
